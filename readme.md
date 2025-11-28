@@ -33,11 +33,7 @@ Vérifie la présence des champs essentiels pour effectuer les validations.
 - `taille` (float)
 - `poids` (float)
 
-### Critère d'Erreur
-```python
-if champ not in donnees or donnees[champ] is None:
-    ERREUR
-```
+
 
 ### Exemple
 ```python
@@ -99,7 +95,7 @@ if taille <= 0 or taille > 300:
 **Plage valide** : 0 à 500 kg
 
 ```python
-if poids <= 0 or poids > 500:
+if poids < 0 or poids > 500:
     ERREUR
 ```
 
@@ -366,45 +362,7 @@ if longueur_jambe > envergure:
 
 3. **Sensibilité à la casse** : Le sexe est converti en minuscules pour la comparaison.
 
-4. **Tolérance** : Certains tests incluent des marges de tolérance (ex: poids adulte ±20%).
 
-5. **Types de résultats** :
-   - **ERREUR** : Incohérence majeure, les données sont considérées comme invalides
-   - **AVERTISSEMENT** : Anomalie détectée mais non-bloquante
+
 
 ---
-
-## 🎯 Exemples Concrets
-
-### Cas 1 : Données Parfaites
-```python
-donnees = {'age': 25, 'sexe': 'homme', 'taille': 178, 'poids': 75}
-# Résultat: Aucune erreur ✅
-```
-
-### Cas 2 : Une Erreur IMC
-```python
-donnees = {'age': 25, 'sexe': 'homme', 'taille': 178, 'poids': 50}
-# Résultat: IMC = 15.8 → Erreur IMC extrême ❌
-```
-
-### Cas 3 : Multiples Erreurs
-```python
-donnees = {'age': 8, 'sexe': 'femme', 'taille': 180, 'poids': 30}
-# Résultat: 
-# - Taille hors norme pour l'âge ❌
-# - IMC extrême ❌
-```
-
-### Cas 4 : Données Invalides
-```python
-donnees = {'age': -5, 'sexe': 'inconnu', 'taille': 350, 'poids': 600}
-# Résultat:
-# - Âge invalide ❌
-# - Sexe invalide ❌
-# - Taille invalide ❌
-# - Poids invalide ❌
-```
-
----
-
